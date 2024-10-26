@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R Conference 2024, Kelantan</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Dr. Wan Nor Arifin" />
+    <meta name="date" content="2024-10-27" />
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <link href="index_files/xaringanExtra-banner/banner.css" rel="stylesheet" />
+    <script src="index_files/xaringanExtra-banner/banner.js"></script>
+    <script src="index_files/kePrint/kePrint.js"></script>
+    <link href="index_files/lightable/lightable.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# <small>R Conference 2024, Kelantan</small>
+]
+.subtitle[
+## <big>Publication-ready Statistical Results Using <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg></big>
+]
+.author[
+### <span style="color:black">Dr. Wan Nor Arifin</span>
+]
+.institute[
+### <span style="color:black"><small>Biostatistics &amp; Research Methodology Unit</br>Universiti Sains Malaysia</br>wnarifin.github.io</small></span>
+]
+.date[
+### <span style="color:black"><small>27 October 2024</small></span>
+]
+
+---
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 110px;
+height: 128px;
+z-index: 0;
+background-image: url(img/r-user-malaysia-logo.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"Publication-ready Statistical Results Using R","exclude":["title-slide"],"position":"top"}'))})</script>
+<script>document.addEventListener('DOMContentLoaded',function(){new xeBanner(JSON.parse('{"left":"Dr. Wan Nor Arifin","center":"R Conference Malaysia 2024","exclude":["title-slide"],"position":"bottom"}'))})</script>
+
+## Outlines
+
+- #### Preparing &amp; Presenting Results
+- #### Prepare Publication-ready Results Using <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
+- #### Other Potentials Using <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
+
+---
+class: center, middle
+
+# Preparing &amp; Presenting Results
+
+---
+## Raw output _vs_ Expected output 
+
+.pull-left[
+#### Raw analysis results &amp;#x1F631;&amp;#x1F631;&amp;#x1F631;
+
+```
+
+Call:
+glm(formula = cad ~ dbp10 + gender, family = "binomial", data = data)
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept)  -6.1205     1.3167  -4.648 3.34e-06 ***
+dbp10         0.4950     0.1463   3.383 0.000717 ***
+genderman     0.8057     0.3908   2.062 0.039253 *  
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 191.56  on 199  degrees of freedom
+Residual deviance: 175.20  on 197  degrees of freedom
+AIC: 181.2
+
+Number of Fisher Scoring iterations: 4
+```
+]
+
+--
+
+.pull-right[
+#### Expected presentation format &amp;#x1F44D;&amp;#x1F44D;&amp;#x1F44D;
+&lt;span&gt;
+&lt;table class="table lightable-classic" style="font-size: 12px; margin-left: auto; margin-right: auto; font-family: Georgia; margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
+&lt;caption style="font-size: initial !important;"&gt;&lt;span style="font-size:small"&gt;
+                   **Table 1**: Associated factors of coronary artery disease (_n_ = 200)
+                   &lt;/span&gt;&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; Factors &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _b_ &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; SE &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; Adj. OR &lt;/th&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _z_-stats &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _P_-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DBP (by 10mmHg) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.495 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.24, 2.21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gender (Male vs Female) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.391 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.055, 4.935 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; OR = odds ratio, SE = standard error.&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/span&gt;
+]
+
+---
+## Issues in Preparing &amp; Presenting Statistical Results
+- Raw outputs &amp;mdash; not suitable for publication / thesis / report / presentation
+- Different standards &amp; guidelines for each
+- Preparation &amp;mdash; tedious, nightmare, error-prone!
+
+---
+## Analyze &amp; Prepare Statistical Results Using <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>
+- Raw outputs from <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> can be unsightly
+- But, <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> outputs are easy to **reprocess**
+- Packages and functions are abundant in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> to refine raw outputs
+- A breeze in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> as compared to other statistical software
+- Usually in combination with `R Markdown` / `Quarto Document`
+
+--
+
+.center[Table and plot straight from <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>!]
+.pull-left[
+&lt;span&gt;
+&lt;table class="table lightable-classic" style="font-size: 12px; margin-left: auto; margin-right: auto; font-family: Georgia; margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
+&lt;caption style="font-size: initial !important;"&gt;&lt;span style="font-size:small"&gt;
+                   **Table 1**: Associated factors of coronary artery disease (_n_ = 200)
+                   &lt;/span&gt;&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; Factors &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _b_ &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; SE &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; Adj. OR &lt;/th&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _z_-stats &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _P_-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DBP (by 10mmHg) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.495 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.24, 2.21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gender (Male vs Female) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.391 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.055, 4.935 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; OR = odds ratio, SE = standard error.&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/span&gt;
+]
+.pull-right[
+&lt;img src="index_files/figure-html/unnamed-chunk-4-1.png" width="100%" /&gt;
+.center[&lt;span style='font-size:small;font-family:Georgia'&gt;**Figure 1**: Associated factors of coronary artery disease (_n_ = 250)&lt;/span&gt;]
+]
+
+---
+class: center, middle
+
+# Prepare Publication-ready Results Using R
+
+---
+
+## Formats of Statistical Results
+
+.pull-left[
+#### Table
+&lt;span&gt;
+&lt;table class="table" style="font-size: 12px; font-family: Georgia; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; Factors &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _b_ &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; SE &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; Adj. OR &lt;/th&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _z_-stats &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _P_-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DBP (by 10mmHg) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.495 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.24, 2.21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gender (Male vs Female) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.391 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.055, 4.935 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;/span&gt;
+
+#### In-text statistics
+&lt;span style="font-family:Georgia;font-size:0.7em;"&gt;
+Individuals with higher diastolic blood pressure (DBP) have higher odds of developing coronary artery disease (CAD), with an adjusted odds ratio (OR) of 1.641 (95% CI: 1.24, 2.21) for every 10mmHg increase in DBP. In addition, males have higher odds of developing CAD compared to females, with adjusted OR of 2.238 (95% CI: 1.055, 4.935).
+&lt;/span&gt;
+]
+
+.pull-right[
+#### Plot
+&lt;span&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-6-1.png" width="100%" /&gt;
+&lt;/span&gt;
+]
+
+---
+
+## Approaches in R
+
+- **Ready-made outputs** &amp;mdash; basic outputs from packages
+- **Custom outputs** &amp;mdash; fine-tune outputs from packages
+- **Custom functions** &amp;mdash; custom outputs, avoid repetition from existing functions
+
+--
+
+.center[
+There are so many options available in <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>, amazing &amp; exciting! ]
+
+---
+
+## Table
+
+.pull-left[
+#### Ready-made outputs
+
+  - So many packages for this purpose
+  - `gtsummary` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - Summary tables for analysis: `epidisplay`, `finalfit`, `jtools`, `stargazer`, `jmv`, ...
+  - Descriptive tables: `arsenal`, `table1`, ...
+  - and many more...?
+
+#### Custom outputs
+
+  - `knitr`: `kable()` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>, `kableExtra` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - `broom`: `tidy()` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - `gt`, `flextable`
+  - more...?
+]
+
+.pull-right[
+#### Custom functions
+
+  - Mix &amp; match preceding functions for repeated use, i.e. same format for same statistical analysis
+  - Save your time, more readable code, reuse for your specific need
+]
+
+---
+
+## Table
+
+.pull-left[
+#### Ready-made outputs
+
+  - So many packages for this purpose
+  - `gtsummary` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - Summary tables for analysis: `epidisplay`, `finalfit`, `jtools`, `stargazer`, `jmv`, ...
+  - Descriptive tables: `arsenal`, `table1`, ...
+  - and many more...?
+
+#### Custom outputs
+
+  - `knitr`: `kable()` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>, `kableExtra` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - `broom`: `tidy()` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - `gt`, `flextable`
+  - more...?
+]
+
+.pull-right[
+#### Custom functions
+
+  - Mix &amp; match preceding functions for repeated use, i.e. same format for same statistical analysis
+  - Save your time, more readable code, reuse for your specific need
+
+These packages &amp; options usually allow you to get output as plain text, HTML, LaTeX or Word formats, even as image or PDF. So, these are adaptable to any document.
+
+]
+
+---
+
+##  Table: Ready-made outputs
+
+.pull-left[
+#### R code: Setup data &amp; analyze
+
+``` r
+# load &amp; prepare data
+data = foreign::read.spss("slog.sav",T,T)
+data$dbp10 = data$dbp/10
+data$gender = factor(data$gender, labels = c("Female","Male"))
+# analyze
+mlog = glm(cad ~ dbp10 + gender, "binomial", data)
+```
+
+#### R code: Prepare &amp; present
+
+``` r
+# present
+gtsummary::theme_gtsummary_journal("jama")  # specify theme
+*gtsummary::tbl_regression(mlog, exponentiate = TRUE,
+                          label = list(
+                            dbp10 = "DBP (by 10mmHg)",
+                            gender = "Gender"))
+gtsummary::reset_gtsummary_theme()
+```
+]
+
+--
+
+.pull-right[
+#### Output
+
+.center[
+&lt;img src="img/tbl_or.png" width="350px"&gt;
+]
+]
+
+---
+
+##  Table: Ready-made outputs
+
+.pull-left[
+#### R code: Prepare data
+
+``` r
+# load &amp; prepare data
+data = foreign::read.spss("slog.sav",T,T)
+data$cad = factor(data$cad, labels = c("No CAD", "CAD"))
+data$gender = factor(data$gender, labels=c("Female","Male"))
+```
+
+#### R code: Present
+
+``` r
+# present
+library(gtsummary) # for all_x() settings
+*gtsummary::tbl_summary(
+  subset(data, select = c(cad, sbp:age, gender)),
+  by = cad,
+  label = list(cad = "CAD", sbp = "SBP",
+               dbp = "DBP", chol = "Cholesterol",
+               age = "Age", gender = "Gender"),
+  statistic = list(
+    all_continuous() ~ "{mean} ({sd})",
+    all_categorical() ~ "{n} ({p}%)"),
+  digits = list(all_continuous() ~ c(1,1),
+                all_categorical() ~ c(0,1)))
+```
+]
+
+--
+
+.pull-right[
+#### Output
+
+.center[
+&lt;img src="img/tbl_des.png" width="350px"&gt;
+]
+]
+
+---
+
+## Table: Ready-made outputs
+
+.pull-left[
+#### R code: Prepare data
+
+``` r
+# load &amp; prepare data
+data = foreign::read.spss("slog.sav",T,T)
+data$cad = factor(data$cad, 
+                   labels = c("No CAD", "CAD"))
+data$gender = factor(data$gender, 
+                     labels=c("Female","Male"))
+```
+
+#### R code: Present
+
+``` r
+# present
+gtsummary::theme_gtsummary_journal("jama") # combine
+gtsummary::theme_gtsummary_mean_sd()       # two themes
+*gtsummary::tbl_summary(
+  subset(data, select = c(cad, sbp:age, gender)),
+  by = cad,
+  label = list(cad = "CAD", sbp = "SBP",
+               dbp = "DBP", chol = "Cholesterol",
+               age = "Age", gender = "Gender"),
+  digits = list(all_continuous() ~ c(1,1),
+                all_categorical() ~ c(0,1)))
+gtsummary::reset_gtsummary_theme()
+```
+]
+
+--
+
+.pull-right[
+#### Output
+<div id="vvtypvoevm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vvtypvoevm table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#vvtypvoevm thead, #vvtypvoevm tbody, #vvtypvoevm tfoot, #vvtypvoevm tr, #vvtypvoevm td, #vvtypvoevm th {
+  border-style: none;
+}
+
+#vvtypvoevm p {
+  margin: 0;
+  padding: 0;
+}
+
+#vvtypvoevm .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#vvtypvoevm .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#vvtypvoevm .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#vvtypvoevm .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#vvtypvoevm .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#vvtypvoevm .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#vvtypvoevm .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#vvtypvoevm .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#vvtypvoevm .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#vvtypvoevm .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#vvtypvoevm .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#vvtypvoevm .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#vvtypvoevm .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#vvtypvoevm .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#vvtypvoevm .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvtypvoevm .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#vvtypvoevm .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#vvtypvoevm .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#vvtypvoevm .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvtypvoevm .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#vvtypvoevm .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvtypvoevm .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#vvtypvoevm .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvtypvoevm .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#vvtypvoevm .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#vvtypvoevm .gt_left {
+  text-align: left;
+}
+
+#vvtypvoevm .gt_center {
+  text-align: center;
+}
+
+#vvtypvoevm .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#vvtypvoevm .gt_font_normal {
+  font-weight: normal;
+}
+
+#vvtypvoevm .gt_font_bold {
+  font-weight: bold;
+}
+
+#vvtypvoevm .gt_font_italic {
+  font-style: italic;
+}
+
+#vvtypvoevm .gt_super {
+  font-size: 65%;
+}
+
+#vvtypvoevm .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#vvtypvoevm .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#vvtypvoevm .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#vvtypvoevm .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#vvtypvoevm .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#vvtypvoevm .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#vvtypvoevm .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;No CAD&lt;/strong&gt;, N = 163"><strong>No CAD</strong>, N = 163</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;CAD&lt;/strong&gt;, N = 37"><strong>CAD</strong>, N = 37</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">SBP, Mean (SD)</td>
+<td headers="stat_1" class="gt_row gt_center">129.3 (22.3)</td>
+<td headers="stat_2" class="gt_row gt_center">143.8 (25.6)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">DBP, Mean (SD)</td>
+<td headers="stat_1" class="gt_row gt_center">80.8 (12.6)</td>
+<td headers="stat_2" class="gt_row gt_center">89.0 (12.2)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Cholesterol, Mean (SD)</td>
+<td headers="stat_1" class="gt_row gt_center">6.1 (1.2)</td>
+<td headers="stat_2" class="gt_row gt_center">6.6 (1.2)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Age, Mean (SD)</td>
+<td headers="stat_1" class="gt_row gt_center">45.2 (8.4)</td>
+<td headers="stat_2" class="gt_row gt_center">47.4 (8.8)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">Gender, n (%)</td>
+<td headers="stat_1" class="gt_row gt_center"><br /></td>
+<td headers="stat_2" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Female</td>
+<td headers="stat_1" class="gt_row gt_center">87 (53.4)</td>
+<td headers="stat_2" class="gt_row gt_center">13 (35.1)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Male</td>
+<td headers="stat_1" class="gt_row gt_center">76 (46.6)</td>
+<td headers="stat_2" class="gt_row gt_center">24 (64.9)</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+]
+
+---
+
+##  Table: Custom outputs
+
+.pull-left[
+#### R code: Setup data &amp; analyze
+
+``` r
+# load &amp; prepare data
+data = foreign::read.spss("slog.sav",T,T)
+data$dbp10 = data$dbp/10
+# analyze
+mlog = glm(cad ~ dbp10 + gender, "binomial", data)
+```
+
+
+#### R code: Prepare with `broom::tidy()` + `tibble`
+
+``` r
+*out_tidy = broom::tidy(mlog)
+*out_or_tidy = broom::tidy(mlog, exp = T, conf.int = T)
+*out = tibble::tibble(
+  Factors = c("DBP (by 10mmHg)", "Gender (Male vs Female)"),
+  "_b_" = out_tidy$estimate[-1], SE = out_tidy$std.error[-1],
+  "Adj. OR" = out_or_tidy$estimate[-1],
+  "95% CI" = paste0(out_or_tidy$conf.low[-1]|&gt;round(3), 
+                    ", ",
+                    out_or_tidy$conf.high[-1]|&gt;round(3)),
+  "_z_-stats" = out_tidy$statistic[-1],
+  "_P_-value" = out_tidy$p.value[-1]
+); out
+```
+]
+
+--
+
+.pull-right[
+#### Output: Unformatted
+
+```
+# A tibble: 2 × 5
+  Factors                 `_b_`    SE `Adj. OR` `95% CI`    
+  &lt;chr&gt;                   &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       
+1 DBP (by 10mmHg)         0.495 0.146      1.64 1.24, 2.21  
+2 Gender (Male vs Female) 0.806 0.391      2.24 1.055, 4.935
+```
+
+```
+# A tibble: 2 × 2
+  `_z_-stats` `_P_-value`
+        &lt;dbl&gt;       &lt;dbl&gt;
+1        3.38    0.000717
+2        2.06    0.0393  
+```
+]
+
+---
+
+## Table: Custom outputs
+
+.pull-left[
+#### R code: Present with `knitr::kable()` + `kableextra`
+
+``` r
+*knitr::kable(out, format = "html", digits = 3,
+             caption = "&lt;span style='font-size:small'&gt;
+                   **Table 1**: Associated factors of 
+                   coronary artery disease (_n_ = 200)
+                   &lt;/span&gt;") |&gt;
+* kableExtra::kable_styling(font_size = 12) |&gt;
+  kableExtra::kable_classic(html_font = "Georgia") |&gt;
+  kableExtra::row_spec(row = 0, bold = T) |&gt;
+  kableExtra::footnote(general = "OR = odds ratio, 
+                       SE = standard error.", 
+                       general_title = "")
+```
+]
+
+--
+
+.pull-right[
+#### Output
+&lt;span&gt;
+&lt;table class="table lightable-classic" style="font-size: 12px; margin-left: auto; margin-right: auto; font-family: Georgia; margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
+&lt;caption style="font-size: initial !important;"&gt;&lt;span style="font-size:small"&gt;
+                   **Table 1**: Associated factors of 
+                   coronary artery disease (_n_ = 200)
+                   &lt;/span&gt;&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; Factors &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _b_ &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; SE &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; Adj. OR &lt;/th&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _z_-stats &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _P_-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DBP (by 10mmHg) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.495 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.24, 2.21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gender (Male vs Female) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.391 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.055, 4.935 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; OR = odds ratio, SE = standard error.&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/span&gt;
+]
+
+---
+
+## Table: Custom functions
+
+.pull-left[
+#### R code: Function `mlg_tbl()`
+
+``` r
+*mlog_tbl = function(mlog_glm) {
+  out_tidy = broom::tidy(mlog_glm)
+  out_or_tidy = broom::tidy(mlog_glm, exp = T, conf.int = T)
+  tibble::tibble(
+    Factors = out_tidy$term[-1],
+    "_b_" = out_tidy$estimate[-1],
+    SE = out_tidy$std.error[-1],
+    "Adj. OR" = out_or_tidy$estimate[-1],
+    "95% CI" = paste0(out_or_tidy$conf.low[-1]|&gt;round(3), 
+                      ", ",
+                      out_or_tidy$conf.high[-1]|&gt;round(3)),
+    "_z_-stats" = out_tidy$statistic[-1],
+    "_P_-value" = out_tidy$p.value[-1])
+}
+```
+]
+
+.pull-right[
+#### R code: Function `mlg_kbl()`
+
+``` r
+*mlog_kbl = function(mlog_tbl, caption = "Table",
+                    font_size = 12, 
+                    font_family = "Georgia") {
+  knitr::kable(mlog_tbl, format = "html", digits = 3,
+               caption = caption) |&gt;
+    kableExtra::kable_styling(font_size = font_size) |&gt;
+    kableExtra::kable_classic(html_font = font_family) |&gt;
+    kableExtra::row_spec(row = 0, bold = T) |&gt;
+    kableExtra::footnote(general = "OR = odds ratio, 
+                       SE = standard error.", 
+                       general_title = "")
+}
+```
+]
+
+---
+
+## Table: Custom functions
+
+.pull-left[
+#### R code: `mlg_tbl()` + `mlg_kbl`
+
+``` r
+# present table
+*tbl1 = mlog_tbl(mlog)
+tbl1$Factors = c("DBP (by 10mmHg)", "Gender (Male vs Female)")
+tbl1_caption = paste0(
+  "**Table 1**: Associated factors of CAD (_n_ = ",
+  nrow(mlog$data), ")")
+*mlog_kbl(tbl1, caption = tbl1_caption,
+*        font_size = 14, font_family = "Comic Sans MS")
+```
+Shorter, reusable code in lengthy document
+]
+
+--
+
+.pull-right[
+#### Output
+&lt;span&gt;
+&lt;table class="table lightable-classic" style="font-size: 14px; margin-left: auto; margin-right: auto; font-family: Comic Sans MS; margin-left: auto; margin-right: auto;border-bottom: 0;"&gt;
+&lt;caption style="font-size: initial !important;"&gt;**Table 1**: Associated factors of CAD (_n_ = 200)&lt;/caption&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; Factors &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _b_ &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; SE &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; Adj. OR &lt;/th&gt;
+   &lt;th style="text-align:left;font-weight: bold;"&gt; 95% CI &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _z_-stats &lt;/th&gt;
+   &lt;th style="text-align:right;font-weight: bold;"&gt; _P_-value &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; DBP (by 10mmHg) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.495 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.146 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.641 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.24, 2.21 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3.383 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.001 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gender (Male vs Female) &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.806 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.391 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.238 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1.055, 4.935 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2.062 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.039 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;tfoot&gt;&lt;tr&gt;&lt;td style="padding: 0; " colspan="100%"&gt;
+&lt;sup&gt;&lt;/sup&gt; OR = odds ratio, SE = standard error.&lt;/td&gt;&lt;/tr&gt;&lt;/tfoot&gt;
+&lt;/table&gt;
+&lt;/span&gt;
+
+_Comic Sans MS_ &amp;#x1F60A;
+]
+
+---
+
+## Plot
+
+.pull-left[
+####  Ready-made outputs
+
+  - Usually available in specific packages for specific analyses, must explore
+  - Mostly rely on `ggplot2` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg> and base `graphics` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>
+  - Examples: `semPlot` (SEM path diagram) <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>, `OptimalCutpoints` (ROC curve), `finalfit` (OR plot), `survival` (survival analysis) &amp;rarr; note they are usually tied to specific analyses
+  - Again, explore!
+]
+
+.pull-right[
+####  Custom outputs
+
+  - Customize options in above packages
+  - `ggplot2` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>, base `graphics` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg>, `lattice`
+
+####  Custom functions
+
+  - Graphics options are often too many and tedious to repeatedly use without affecting readability of your code
+  - Advisable to write functions for customizing the plots for your specific data and use-case
+]
+
+--
+
+These packages &amp; options usually allow you get output several image formats e.g. png, svg, pdf etc. So, this can be easily integrated in any document.
+
+---
+
+## Plot: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+attr(data$cad, "label") = "Coronary artery disease"
+attr(data$dbp10, "label") = "DBP (by 10mmHg)"
+attr(data$gender, "label") = "Gender"
+data$gender = factor(data$gender, labels=c("Female","Male"))
+*finalfit::or_plot(data, dependent, explanatory)
+```
+]
+
+.pull-right[
+#### Output
+&lt;span&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-27-1.png" width="100%" /&gt;
+&lt;/span&gt;
+]
+
+---
+
+##  Plot: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+attr(data$cad, "label") = "Coronary artery disease"
+attr(data$dbp10, "label") = "DBP (by 10mmHg)"
+data$gender = factor(data$gender, labels=c("Female","Male"))
+attr(data$gender, "label") = "Gender (vs Female)"
+explanatory = c("dbp10", "gender")
+dependent = "cad"
+finalfit::or_plot(data, dependent, explanatory,
+                  dependent_label = "Odds ratio (OR) of
+                  coronary artery disease by factor",
+                  suffix = "",
+                  remove_ref = T,
+                  title_text_size = 16,
+                  table_text_size = 5,
+                  plot_opts = 
+                    list(ggplot2::xlab("OR (95% CI)")))
+```
+]
+
+.pull-right[
+#### Output
+&lt;span&gt;
+&lt;img src="index_files/figure-html/unnamed-chunk-29-1.png" width="100%" /&gt;
+&lt;/span&gt;
+]
+
+---
+
+##  Plot: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+# SEM model
+model = "
+F1 =~ Q1 + Q2 + Q3 + Q4 + Q5
+F2 =~ Q6 + Q7 + Q8 + Q9 + Q10
+F2 ~ F1
+"
+survey = lavaan::simulateData(model) # sim. data for practice
+fit_model = lavaan::sem(model, data = survey)
+# draw path diagram
+*semPlot::semPaths(fit_model, what="path",
+                  whatLabels="name", edge.color = "black",
+                  layout = "tree2", rotation = 2)
+```
+]
+
+.pull-right[
+#### Output
+&lt;img src="index_files/figure-html/unnamed-chunk-31-1.png" width="100%" /&gt;
+]
+
+---
+
+##  Plot: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+data1 = data
+data1$p_mlog = 
+  predict(mlog, type = "response") # probability
+OptimalCutpoints::optimal.cutpoints(X = "p_mlog", 
+                                    status = "cad", 
+                                    tag.healthy = "no cad",
+                                    methods = "Youden", 
+                                    data = data1,
+                                    ci.fit = TRUE) |&gt; 
+  plot(which = 1)
+```
+]
+
+.pull-right[
+#### Output
+&lt;img src="index_files/figure-html/unnamed-chunk-33-1.png" width="100%" /&gt;
+]
+
+---
+
+##  Plot: Custom outputs
+
+Can use `ggplot2`, base `graphics` or `lattice`.
+
+Typically, you have to customize the plot, this deserves a separate talk.
+
+But, most often the settings are lengthy! &amp;rarr; require custom functions for repeatedly used plots.
+
+---
+
+## Plot: Custom functions
+
+.pull-left[
+#### R code: Simulated data
+
+``` r
+set.seed(007)
+data_hist = tibble::tibble(
+  "Weight (kg)" = rnorm(1000, mean = 50, sd = 15),
+  "Height (cm)" = rnorm(1000, mean = 150, sd = 10))
+```
+
+#### R code: Histogram by `ggplot2`
+
+``` r
+library(ggplot2)
+ggplot(data = data_hist, aes(`Weight (kg)`)) +
+  geom_histogram(bins = 10)
+```
+]
+
+--
+
+.pull-right[
+#### Output: Without customization
+&lt;img src="index_files/figure-html/unnamed-chunk-36-1.png" width="100%" /&gt;
+]
+
+---
+
+## Plot: Custom functions
+
+.pull-left[
+#### R code: Simulated data
+
+``` r
+set.seed(007)
+data_hist = tibble::tibble(
+  "Weight (kg)" = rnorm(1000, mean = 50, sd = 15),
+  "Height (cm)" = rnorm(1000, mean = 150, sd = 10))
+```
+
+#### R code: Histogram by `ggplot2`
+
+``` r
+library(ggplot2)
+ggplot(data = data_hist, aes(`Weight (kg)`)) +
+  geom_histogram(bins = 10, color = "black", 
+                 fill = "cornsilk", alpha = 0.5) +
+  labs(title = "Histogram of Weight (kg)", y = "Frequency") +
+  theme_classic() +
+  theme(plot.title = element_text(color = "steelblue", 
+                       size = 16, face = "bold", hjust = 0.5),
+        axis.title = element_text(hjust = 1),
+        axis.line = element_line(
+          arrow = grid::arrow(length = unit(.2, "cm"))))
+```
+]
+
+.pull-right[
+#### Output: With customization + **lengthy options**
+&lt;img src="index_files/figure-html/unnamed-chunk-39-1.png" width="100%" /&gt;
+]
+
+---
+
+## Plot: Custom functions
+
+.pull-left[
+#### R code: Function `my_hist`
+
+``` r
+*my_hist = function(data, variable, bins = 10) {
+  title_x = paste0("Histogram of ", 
+                   names(data[variable]))
+  ggplot2::ggplot(data = data, aes(.data[[variable]])) +
+    ggplot2::geom_histogram(bins = 10, color = "black", 
+                            fill = "cornsilk", alpha = 0.5) +
+    ggplot2::labs(title = title_x, y = "Frequency") +
+    ggplot2::theme_classic() +
+    ggplot2::theme(
+      plot.title = 
+        ggplot2::element_text(
+          color = "steelblue", 
+          size = 16, face = "bold",
+          hjust = 0.5),
+      axis.title = ggplot2::element_text(hjust = 1),
+      axis.line = ggplot2::element_line(
+        arrow = grid::arrow(length = unit(.2, "cm"))))
+}
+```
+]
+
+.pull-right[
+]
+
+---
+
+## Plot: Custom functions
+
+.pull-left[
+#### R code: `my_hist` with **Weight (kg)**
+
+``` r
+set.seed(007)
+data_hist = tibble::tibble(
+  "Weight (kg)" = rnorm(1000, mean = 50, sd = 15),
+  "Height (cm)" = rnorm(1000, mean = 150, sd = 10)
+)
+*my_hist(data_hist, "Weight (kg)")
+```
+]
+
+--
+
+.pull-right[
+#### Output
+&lt;img src="index_files/figure-html/unnamed-chunk-42-1.png" width="100%" /&gt;
+]
+
+---
+
+## Plot: Custom functions
+
+.pull-left[
+#### R code: `my_hist` with **Weight (kg)** and **Height (cm)**
+
+``` r
+set.seed(007)
+data_hist = tibble::tibble(
+  "Weight (kg)" = rnorm(1000, mean = 50, sd = 15),
+  "Height (cm)" = rnorm(1000, mean = 150, sd = 10)
+)
+*my_hist(data_hist, "Weight (kg)")
+*my_hist(data_hist, "Height (cm)")
+```
+]
+
+.pull-right[
+#### Output
+&lt;img src="index_files/figure-html/unnamed-chunk-44-1.png" width="100%" /&gt;&lt;img src="index_files/figure-html/unnamed-chunk-44-2.png" width="100%" /&gt;
+]
+
+---
+
+## In-text
+For in-text ouput, &lt;code&gt;&amp;#96;r code&amp;#96;&lt;/code&gt; is used with `R Markdown` to allow in-text integration.
+
+.pull-left[
+####  Ready-made outputs
+
+  - Specific text results directly from functions, or subset of output objects
+  - &lt;code&gt;&amp;#96;r mean(x)&amp;#96;&lt;/code&gt;, &lt;code&gt;&amp;#96;r object$x&amp;#96;&lt;/code&gt; etc
+  - `gtsummary`'s `inline_text()`
+  
+####  Custom functions
+
+  - Functions for repetitive `paste0()` use
+  - mean (SD), _r_ coefficient (_p_-value = 0.xxx), OR (95% CI, LL OR, UL OR) etc
+  - &lt;code&gt;&amp;#96;r mean_sd(x)&amp;#96;&lt;/code&gt;, &lt;code&gt;&amp;#96;r or_ci(object)&amp;#96;&lt;/code&gt; &amp;rarr; simplify the code, easy to reuse
+]
+
+.pull-right[
+####  Custom outputs
+
+  - Combine all these, `paste()` and `paste0()` <svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/></svg> are commonly used
+  - &lt;code&gt;&amp;#96;r paste0(mean(x), " (", sd(x), ")&amp;#96;&lt;/code&gt;
+  - &lt;code&gt;&amp;#96;r paste0(object$estimate, " (95% CI: ", object$LL, ", ", object$UL, ")")&amp;#96;&lt;/code&gt;
+  - Can also save `paste0()` resulting objects, so can use &lt;code&gt;&amp;#96;r mean_sd&amp;#96;&lt;/code&gt;, &lt;code&gt;&amp;#96;r or_ci&amp;#96;&lt;/code&gt;
+]
+
+---
+
+##  Text: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+# analysis part
+fit = lm(sbp ~ saltadd, BP)
+# using broom
+*out = broom::tidy(fit, conf.int = T)
+```
+
+#### Markdown
+&lt;span style="font-family:Lucida Console;font-size:0.7em;"&gt;There were \_n\_ = &lt;code&gt;&amp;#96;r nrow(BP)&amp;#96;&lt;/code&gt; participants, with &lt;code&gt;&amp;#96;r table(BP$sex)[2]&amp;#96;&lt;/code&gt; of them are females. The mean SBP was &lt;code&gt;&amp;#96;r mean(BP$sbp)|&gt;round(1)&amp;#96;&lt;/code&gt; (SD = &lt;code&gt;&amp;#96;r sd(BP$sbp)|&gt;round(1)&amp;#96;&lt;/code&gt;). From the regression analysis, adding salt to the food increases SBP by &lt;code&gt;&amp;#96;r out$estimate[2]|&gt;round(1)&amp;#96;&lt;/code&gt; mmHg.&lt;/span&gt;
+]
+
+.pull-right[
+#### Output
+
+&lt;span style="font-family:Georgia;font-size:0.8em;"&gt;There were _n_ = 80 participants, with 39 of them are females. The mean SBP was 151.2 (SD = 37.3). From the regression analysis, adding salt to the food increases SBP by 25.6 mmHg.&lt;/span&gt;
+]
+
+---
+
+##  Text: Ready-made outputs
+
+.pull-left[
+#### R code
+
+``` r
+# analysis part
+fit = lm(sbp ~ saltadd, BP)
+# using gtsummary
+*gtout = gtsummary::tbl_regression(fit, conf.int = T)
+```
+
+#### Markdown
+&lt;span style="font-family:Lucida Console;font-size:0.7em;"&gt;There were \_n\_ = &lt;code&gt;&amp;#96;r nrow(BP)&amp;#96;&lt;/code&gt; participants, with &lt;code&gt;&amp;#96;r table(BP$sex)[2]&amp;#96;&lt;/code&gt; of them are females. The mean SBP was &lt;code&gt;&amp;#96;r mean(BP$sbp)|&gt;round(1)&amp;#96;&lt;/code&gt; (SD = &lt;code&gt;&amp;#96;r sd(BP$sbp)|&gt;round(1)&amp;#96;&lt;/code&gt;). From the regression analysis, adding salt to the food increases SBP by &lt;code&gt;&amp;#96;r gtsummary::inline_text(gtout, variable = saltadd, level = "yes")&amp;#96;&lt;/code&gt; mmHg.&lt;/span&gt;
+]
+
+.pull-right[
+#### Output
+
+&lt;span style="font-family:Georgia;font-size:0.8em;"&gt;There were _n_ = 80 participants, with 39 of them are females. The mean SBP was 151.2 (SD = 37.3). From the regression analysis, adding salt to the food increases SBP by 26 (95% CI 9.8, 41; p=0.002) mmHg.&lt;/span&gt;
+]
+
+---
+
+##  Text: Custom outputs
+
+.pull-left[
+#### R code
+
+``` r
+*tbl_sex = table(BP$sex)
+# analysis part
+fit = lm(sbp ~ saltadd, BP)
+out = broom::tidy(fit, conf.int = T)
+*coef_ci = paste0(out$estimate[2]|&gt;round(1),
+*   " (95% CI: ", out$conf.low[2]|&gt;round(1),
+*   ", ", out$conf.high[2]|&gt;round(1), ")")
+```
+
+#### Markdown
+&lt;span style="font-family:Lucida Console;font-size:0.7em;"&gt;
+There were \_n\_ = &lt;code&gt;&amp;#96;r nrow(BP)&amp;#96;&lt;/code&gt; participants, with &lt;code&gt;&amp;#96;r tbl_sex[2]&amp;#96;&lt;/code&gt; (&lt;code&gt;&amp;#96;r prop.table(tbl_sex)[2]|&gt;round(3)*100&amp;#96;&lt;/code&gt;%) of them are females. The mean SBP was &lt;code&gt;&amp;#96;r paste0(mean(BP$sbp)|&gt;round(1), " (SD = ", sd(BP$sbp)|&gt;round(1), ")")&amp;#96;&lt;/code&gt;. From the regression analysis, adding salt to the food increases SBP by &lt;code&gt;&amp;#96;r coef_ci&amp;#96;&lt;/code&gt; mmHg.&lt;/span&gt;
+]
+
+.pull-right[
+#### Output
+
+&lt;span style="font-family:Georgia;font-size:0.8em;"&gt;There were _n_ = 80 participants, with 39 (48.8%) of them are females. The mean SBP was 151.2 (SD = 37.3). From the regression analysis, adding salt to the food increases SBP by 25.6 (95% CI: 9.8, 41.3) mmHg.&lt;/span&gt;
+
+Using `paste0()` _makes it easier to add more complicated results
+]
+
+---
+
+## Text: Custom functions
+
+.pull-left[
+#### R code
+
+``` r
+# custom functions
+*mean_sd = function(x, digits = 1) {
+  paste0(mean(x)|&gt;round(digits), " (SD = ",
+         sd(BP$sbp)|&gt;round(digits), ")")}
+*n_percent = function(x, cat_number = 1, digits = 1) {
+  tbl = table(x)
+  n = tbl[cat_number]
+  p = prop.table(tbl)
+  percent = p[cat_number] * 100
+  paste0(n, " (", percent|&gt;round(digits), "%)")
+}
+*coef_ci = function(tidy_out, estimate_number = 2,
+*                  digits = 1) {
+  paste0(tidy_out$estimate[estimate_number]|&gt;round(digits),
+    " (95% CI: ", 
+    tidy_out$conf.low[estimate_number]|&gt;round(digits),
+    ", ", 
+    tidy_out$conf.high[estimate_number]|&gt;round(digits), ")")
+}
+# analysis part
+*out = lm(sbp ~ saltadd, BP) |&gt;
+* broom::tidy(conf.int = T)
+```
+]
+
+.pull-right[
+#### Markdown
+&lt;span style="font-family:Lucida Console;font-size:0.7em;"&gt;
+There were \_n\_ = &lt;code&gt;&amp;#96;r nrow(BP)&amp;#96;&lt;/code&gt; participants, with &lt;code&gt;&amp;#96;r n_percent(BP$sex, 2)&amp;#96;&lt;/code&gt; of them are females, and &lt;code&gt;&amp;#96;r n_percent(BP$saltadd, 2)&amp;#96;&lt;/code&gt; participants added salt to their food. The mean SBP and DBP were &lt;code&gt;&amp;#96;r mean_sd(BP$sbp)&amp;#96;&lt;/code&gt; and &lt;code&gt;&amp;#96;r mean_sd(BP$dbp)&amp;#96;&lt;/code&gt; respectively. From the regression analysis, adding salt to the food increases SBP by &lt;code&gt;&amp;#96;r coef_ci(out, 2)&amp;#96;&lt;/code&gt; mmHg.&lt;/span&gt;
+
+Now we use these customized functions in R markdown. Note we use `paste0()` in these functions
+]
+
+---
+
+## Text: Custom functions
+
+.pull-left[
+#### Markdown
+&lt;span style="font-family:Lucida Console;font-size:0.7em;"&gt;
+There were \_n\_ = &lt;code&gt;&amp;#96;r nrow(BP)&amp;#96;&lt;/code&gt; participants, with &lt;code&gt;&amp;#96;r n_percent(BP$sex, 2)&amp;#96;&lt;/code&gt; of them are females, and &lt;code&gt;&amp;#96;r n_percent(BP$saltadd, 2)&amp;#96;&lt;/code&gt; participants added salt to their food. The mean SBP and DBP were &lt;code&gt;&amp;#96;r mean_sd(BP$sbp)&amp;#96;&lt;/code&gt; and &lt;code&gt;&amp;#96;r mean_sd(BP$dbp)&amp;#96;&lt;/code&gt; respectively. From the regression analysis, adding salt to the food increases SBP by &lt;code&gt;&amp;#96;r coef_ci(out, 2)&amp;#96;&lt;/code&gt; mmHg.&lt;/span&gt;
+]
+
+.pull-right[
+#### Output
+
+&lt;span style="font-family:Georgia;font-size:0.8em;"&gt;There were _n_ = 80 participants, with 39 (48.8%) of them are females, and 43 (53.8%) participants added salt to their food. The mean SBP and DBP were 151.2 (SD = 37.3) and 97.5 (SD = 37.3) respectively. From the regression analysis, adding salt to the food increases SBP by 25.6 (95% CI: 9.8, 41.3) mmHg.&lt;/span&gt;
+
+Customized functions make it easier to to obtain same statistical results for different variables
+]
+
+---
+class: center, middle
+
+# Other Potentials Using R
+
+---
+
+## Custom Package for MJMS
+
+- A new package for Malaysian Journal of Medical Sciences (MJMS)
+- Functions to produce tables for common statistical analyses
+- Utilize `broom` + `knitr::kable()` or `gtsummary`'s `theme_gtsummary_xxx()` 
+- Encourage authors to use <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> &amp;mdash; can get presentation-ready results with minimal efforts
+- Future, easy-to-specify journal specific templates that community can contribute &amp;rarr; utilizing the same package
+
+---
+## Local LLM Using `rollama`
+
+.pull-left[
+- `rollama` links <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> with local LLM tool `ollama`
+- Eliminates the need to write templates
+- Give it example tables/plots from the target journal &amp;mdash; multi-shot prompts
+- Let it format from raw <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> outputs
+]
+
+--
+
+.pull-right[
+&lt;img src="https://ollama.com/public/ollama.png" height="150px"&gt;&amp;nbsp;&amp;nbsp;`ollama`
+&lt;/br&gt;&lt;/br&gt;
+&lt;img src="https://jbgruber.github.io/rollama/logo.svg" height="150px"&gt;&amp;nbsp;&amp;nbsp;<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>`ollama`
+]
+
+---
+## Local LLM Using `rollama`
+
+.pull-left[
+- `rollama` links <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> with local LLM tool `ollama`
+- Eliminates the need to write templates
+- Give it example tables/plots from the target journal &amp;mdash; multi-shot prompts
+- Let it format from raw <svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg> outputs
+
+.center[
+But, running it locally needs GPU...
+&lt;img src="img/gpu.png" height="250px" alt="Image generated with Copilot"&gt;&lt;/br&gt;
+&lt;small&gt;&lt;small&gt;*Image generated with Copilot&lt;/small&gt;&lt;/small&gt;
+]
+]
+
+.pull-right[
+&lt;img src="https://ollama.com/public/ollama.png" height="150px"&gt;&amp;nbsp;&amp;nbsp;`ollama`
+&lt;/br&gt;&lt;/br&gt;
+&lt;img src="https://jbgruber.github.io/rollama/logo.svg" height="150px"&gt;&amp;nbsp;&amp;nbsp;<svg aria-hidden="true" role="img" viewBox="0 0 581 512" style="height:1em;width:1.13em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:steelblue;overflow:visible;position:relative;"><path d="M581 226.6C581 119.1 450.9 32 290.5 32S0 119.1 0 226.6C0 322.4 103.3 402 239.4 418.1V480h99.1v-61.5c24.3-2.7 47.6-7.4 69.4-13.9L448 480h112l-67.4-113.7c54.5-35.4 88.4-84.9 88.4-139.7zm-466.8 14.5c0-73.5 98.9-133 220.8-133s211.9 40.7 211.9 133c0 50.1-26.5 85-70.3 106.4-2.4-1.6-4.7-2.9-6.4-3.7-10.2-5.2-27.8-10.5-27.8-10.5s86.6-6.4 86.6-92.7-90.6-87.9-90.6-87.9h-199V361c-74.1-21.5-125.2-67.1-125.2-119.9zm225.1 38.3v-55.6c57.8 0 87.8-6.8 87.8 27.3 0 36.5-38.2 28.3-87.8 28.3zm-.9 72.5H365c10.8 0 18.9 11.7 24 19.2-16.1 1.9-33 2.8-50.6 2.9v-22.1z"/></svg>`ollama`
+]
+
+---
+
+class: center, middle
+
+# PhD Position Vacancy
+
+---
+class: center, middle
+
+![](img/eposter_GRA_DR_WAN_NOR_ARIFIN.jpg)
+
+---
+class: center, middle
+
+# Thanks!
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

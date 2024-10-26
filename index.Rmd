@@ -1205,13 +1205,13 @@ n_percent = function(x, cat_number = 1, digits = 1) { #<<
   percent = p[cat_number] * 100
   paste0(n, " (", percent|>round(digits), "%)")
 }
-coef_ci = function(tidy_or, estimate_number = 2, #<<
+coef_ci = function(tidy_out, estimate_number = 2, #<<
                    digits = 1) { #<<
-  paste0(tidy_or$estimate[estimate_number]|>round(digits),
+  paste0(tidy_out$estimate[estimate_number]|>round(digits),
     " (95% CI: ", 
-    tidy_or$conf.low[estimate_number]|>round(digits),
+    tidy_out$conf.low[estimate_number]|>round(digits),
     ", ", 
-    tidy_or$conf.high[estimate_number]|>round(digits), ")")
+    tidy_out$conf.high[estimate_number]|>round(digits), ")")
 }
 # analysis part
 out = lm(sbp ~ saltadd, BP) |> #<<
@@ -1251,13 +1251,13 @@ n_percent = function(x, cat_number = 1, digits = 1) {
   percent = p[cat_number] * 100
   paste0(n, " (", percent|>round(digits), "%)")
 }
-coef_ci = function(tidy_or, estimate_number = 2, 
+coef_ci = function(tidy_out, estimate_number = 2, 
                    digits = 1) {
-  paste0(tidy_or$estimate[estimate_number]|>round(digits),
+  paste0(tidy_out$estimate[estimate_number]|>round(digits),
     " (95% CI: ", 
-    tidy_or$conf.low[estimate_number]|>round(digits),
+    tidy_out$conf.low[estimate_number]|>round(digits),
     ", ", 
-    tidy_or$conf.high[estimate_number]|>round(digits), ")")
+    tidy_out$conf.high[estimate_number]|>round(digits), ")")
 }
 # analysis part
 out = lm(sbp ~ saltadd, BP) |>
@@ -1312,7 +1312,7 @@ class: center, middle
 
 .center[
 But, running it locally needs GPU...
-<img src="img/graphic card with powerful GPU, fire, smoke, moving fans, white background.png" height="250px" alt="Image generated with Copilot"></br>
+<img src="img/gpu.png" height="250px" alt="Image generated with Copilot"></br>
 <small><small>*Image generated with Copilot</small></small>
 ]
 ]
