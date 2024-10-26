@@ -131,9 +131,31 @@ out_pres_tbl
 
 ---
 ## Issues in Preparing & Presenting Statistical Results
-- Raw outputs &mdash; not suitable for publication / thesis / report / presentation
+- **Raw outputs &mdash; not suitable for publication / thesis / report / presentation**
 - Different standards & guidelines for each
 - Preparation &mdash; tedious, nightmare, error-prone!
+
+<img src="img/img0.png" height="355px">
+
+---
+## Issues in Preparing & Presenting Statistical Results
+- **Raw outputs &mdash; not suitable for publication / thesis / report / presentation**
+- **Different standards & guidelines for each**
+- Preparation &mdash; tedious, nightmare, error-prone!
+
+<img src="img/img0.png" height="355px">
+<img src="img/img2.png" height="355px">
+
+---
+## Issues in Preparing & Presenting Statistical Results
+- **Raw outputs &mdash; not suitable for publication / thesis / report / presentation**
+- **Different standards & guidelines for each**
+- **Preparation &mdash; tedious, nightmare, error-prone!**
+
+<img src="img/img0.png" height="355px">
+<img src="img/img2.png" height="355px">
+<img src="img/img3.png" height="355px">
+<br/><small><small>*Images generated with Copilot</small></small>
 
 ---
 ## Analyze & Prepare Statistical Results Using `r r_blue`
@@ -221,9 +243,9 @@ finalfit::or_plot(data, dependent, explanatory,
 - **Custom functions** &mdash; custom outputs, avoid repetition from existing functions
 
 --
-
+<br/><br/><br/><br/>
 .center[
-There are so many options available in `r r_blue`, amazing & exciting! ]
+###There are so many options available in `r r_blue`, amazing & exciting! ]
 
 ---
 
