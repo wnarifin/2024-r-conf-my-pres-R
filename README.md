@@ -1,1 +1,3 @@
-# 2024-r-conf-my-pres-R
+# Publication-ready Statistical Results Using R
+
+## R Conference Malaysia 2024
