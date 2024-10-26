@@ -135,7 +135,7 @@ out_pres_tbl
 - Different standards & guidelines for each
 - Preparation &mdash; tedious, nightmare, error-prone!
 
-<img src="img/img0.png" height="355px">
+<img src="img/img4.png" height="355px">
 
 ---
 ## Issues in Preparing & Presenting Statistical Results
@@ -143,7 +143,7 @@ out_pres_tbl
 - **Different standards & guidelines for each**
 - Preparation &mdash; tedious, nightmare, error-prone!
 
-<img src="img/img0.png" height="355px">
+<img src="img/img4.png" height="355px">
 <img src="img/img2.png" height="355px">
 
 ---
@@ -152,7 +152,7 @@ out_pres_tbl
 - **Different standards & guidelines for each**
 - **Preparation &mdash; tedious, nightmare, error-prone!**
 
-<img src="img/img0.png" height="355px">
+<img src="img/img4.png" height="355px">
 <img src="img/img2.png" height="355px">
 <img src="img/img3.png" height="355px">
 <br/><small><small>*Images generated with Copilot</small></small>
