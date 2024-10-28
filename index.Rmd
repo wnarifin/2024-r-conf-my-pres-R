@@ -977,7 +977,7 @@ my_hist = function(data, variable, bins = 10) {  #<<
   title_x = paste0("Histogram of ", 
                    names(data[variable]))
   ggplot2::ggplot(data = data, aes(.data[[variable]])) +
-    ggplot2::geom_histogram(bins = 10, color = "black", 
+    ggplot2::geom_histogram(bins = bins, color = "black", 
                             fill = "cornsilk", alpha = 0.5) +
     ggplot2::labs(title = title_x, y = "Frequency") +
     ggplot2::theme_classic() +
